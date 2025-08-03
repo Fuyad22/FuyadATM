@@ -9,10 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-/**
- * A classic ATM GUI that uses JOptionPane for user input.
- * This version requires PIN verification for every transaction.
- */
+
 public class ATMGUI extends JFrame {
 
     private final BankAccount account;
@@ -32,20 +29,20 @@ public class ATMGUI extends JFrame {
     public ATMGUI() {
         account = new BankAccount(1000.00, "1015");
 
-        // Frame Setup
+
         setTitle("ATM Machine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 700);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // Main Panel
+
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBackground(primaryColor);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         add(mainPanel);
 
-        // Display Screen
+
         displayScreen = new JTextArea(12, 40);
         displayScreen.setFont(displayFont);
         displayScreen.setEditable(false);
@@ -57,12 +54,12 @@ public class ATMGUI extends JFrame {
         scrollPane.setBorder(BorderFactory.createLineBorder(accentColor, 2));
         mainPanel.add(scrollPane, BorderLayout.NORTH);
 
-        // Button Panel
+
         JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         buttonPanel.setBackground(primaryColor);
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
 
-        // Create and Add Buttons
+
         JButton checkBalanceButton = createStyledButton("Check Balance");
         JButton depositButton = createStyledButton("Deposit");
         JButton withdrawButton = createStyledButton("Withdraw");
@@ -77,7 +74,7 @@ public class ATMGUI extends JFrame {
         buttonPanel.add(changePinButton);
         buttonPanel.add(exitButton);
 
-        // Action Listeners
+
         checkBalanceButton.addActionListener(e -> performActionWithPinCheck(this::checkBalance));
         depositButton.addActionListener(e -> performActionWithPinCheck(this::depositMoney));
         withdrawButton.addActionListener(e -> performActionWithPinCheck(this::withdrawMoney));

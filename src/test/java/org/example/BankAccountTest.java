@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.File;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * JUnit 5 test class for the BankAccount class.
- * This version includes parameterized tests for more efficient validation.
+/*
+JUnit 5 and parameterized test
+
  */
 class BankAccountTest {
 

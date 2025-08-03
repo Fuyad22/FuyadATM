@@ -10,10 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * A class to represent a user's bank account.
- * It stores the balance, PIN, and transaction history, and logs all transactions to a CSV file.
- */
+
 public class BankAccount {
     private double balance;
     private String pin;
@@ -21,11 +18,7 @@ public class BankAccount {
     private final String historyFilePath;
     private static final int MAX_HISTORY_ITEMS = 10;
 
-    /**
-     * Constructor to initialize the bank account.
-     * @param initialBalance The starting balance.
-     * @param pin The personal identification number.
-     */
+
     public BankAccount(double initialBalance, String pin) {
         this.balance = Math.max(0, initialBalance);
         this.pin = pin;
