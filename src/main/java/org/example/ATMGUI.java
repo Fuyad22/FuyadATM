@@ -30,7 +30,7 @@ public class ATMGUI extends JFrame {
         account = new BankAccount(1000.00, "1015");
 
 
-        setTitle("ATM Machine");
+        setTitle("Fuyad's💰💵 ATM Machine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 700);
         setLocationRelativeTo(null);
