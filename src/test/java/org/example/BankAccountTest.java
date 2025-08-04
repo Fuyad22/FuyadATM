@@ -83,6 +83,13 @@ class BankAccountTest {
         account.deposit(amount);
         assertEquals(1000.00, account.getBalance(), "Balance should not change on invalid deposit.");
     }
+    @Test
+    void testDeposit_LargeAmount() {
+        String result = account.deposit(999999.99);
+
+        assertEquals("Successfully deposited $999999.99", result);
+        assertEquals(1000999.99, account.getBalance(), 0.01);
+    }
 
     @Test
     @DisplayName("Should withdraw a valid amount correctly")
