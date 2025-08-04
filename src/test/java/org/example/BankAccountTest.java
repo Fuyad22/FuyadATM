@@ -8,6 +8,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
@@ -33,8 +36,11 @@ class BankAccountTest {
     @DisplayName("Constructor should set positive initial balance")
     void testConstructorWithPositiveBalance() {
         assertEquals(1000.00, account.getBalance(), "Incorrect initial balance.");
+
         assertFalse(account.getTransactionHistory().isEmpty(), "History should not be empty.");
     }
+
+
 
     @ParameterizedTest
     @DisplayName("PIN validation should work for various inputs")
@@ -80,9 +86,10 @@ class BankAccountTest {
 
     @Test
     @DisplayName("Should withdraw a valid amount correctly")
+
     void testValidWithdraw() {
-        account.withdraw(300.00);
-        assertEquals(700.00, account.getBalance(), "Balance incorrect after withdrawal.");
+        account.withdraw(300);
+        assertEquals(700, account.getBalance(), "Balance incorrect after withdrawal.");
     }
 
     @ParameterizedTest
@@ -92,4 +99,14 @@ class BankAccountTest {
         account.withdraw(amount);
         assertEquals(1000.00, account.getBalance(), "Balance should not change on invalid withdrawal.");
     }
+    @Test
+    @DisplayName("Should not withdraw more than balance")
+    void testWithdrawInsufficientFunds() {
+        account.withdraw(1000.01);
+        assertEquals(1000.00, account.getBalance(), "Insufficient funds withdrawal changed balance.");
+    }
+
+
+
+
 }

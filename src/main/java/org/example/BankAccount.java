@@ -84,6 +84,7 @@ public class BankAccount {
         logTransactionToFile(type, amount, this.balance);
     }
 
+
     private String formatTransaction(String type, double amount) {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String sign = type.contains("DEPOSIT") ? "+" : "-";
@@ -91,14 +92,9 @@ public class BankAccount {
         return String.format("%s | %-17s | %s$%.2f", timestamp, type, sign, amount);
     }
 
-    /**
-     * Appends a transaction record to the CSV file.
-     * @param type The type of transaction (e.g., DEPOSIT).
-     * @param amount The amount involved.
-     * @param newBalance The balance after the transaction.
-     */
+
     private void logTransactionToFile(String type, double amount, double newBalance) {
-        // 'try-with-resources' ensures the writer is closed automatically.
+
         try (FileWriter fw = new FileWriter(historyFilePath, true);
              PrintWriter pw = new PrintWriter(fw)) {
 
@@ -112,15 +108,15 @@ public class BankAccount {
             pw.printf("%s,%s,%.2f,%.2f%n", timestamp, type, amount, newBalance);
 
         } catch (IOException e) {
-            // In a real application, you might show an error to the user.
-            // For this example, we'll just print to the console.
+
             System.out.println("Error writing to transaction log: " + e.getMessage());
         }
     }
 
     public List<String> getTransactionHistory() {
-        // This returns the recent history stored in memory.
-        // For a full history, you would read from the CSV file.
+
         return Collections.unmodifiableList(transactionHistory);
     }
+
+
 }
